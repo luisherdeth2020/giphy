@@ -9,7 +9,7 @@ const apiURL =
 function App() {
 	const [gifs, setGifs] = useState([]);
 
-	useEffect(function () {
+	useEffect(function() {
 		fetch(apiURL)
 			//TODO De la respuesta, convetir un tipo JSON
 			//TODO Obtenemos como una RESPUESTA, convertir OBJETO (formato JSON)
@@ -19,31 +19,12 @@ function App() {
 			// .catch((error) => console.log(error));
 			// const { resp = [] } = data;
 			//TODO tenemos formateada como JSON
-
+      
 			.then((response) => {
-				setGifs(response.data);
 				const { data } = response;
-				// if(Array.isArray(data)){
-
-				
-				// setGifs(response.data);
-
-				// const gifs = data.map((item) => item.images.downsized_medium);
-				// const title = data.map((item) => item.images.title);
-
-				const gifs = data.map((item) => {
-					const { images, title, id } = item;
-					const { url } = images.downsized_medium;
-					return { title, id, url };
-				});
-				return gifs;
-				// gifs.map((item) => item.images.downsized_medium.url);
-				// setGifs(data.map((item) => item.images.downsized_medium.url));
-				// const { data } = response;
+				const gifs = data.map((item) => item.images.downsized_medium.url);
 				// console.log(gifs);
-				// setGifs(gifs);
-				// setGifs(title);
-			// }
+				setGifs(gifs);
 			});
 	}, []);
 
@@ -51,10 +32,8 @@ function App() {
 		<>
 			<Navbar title="Rick and Morty App" />
 			<div className="container">
-				{gifs.map((setGifs) => (
-					<img src={setGifs.url} alt="panda" />
-				))}
-			</div>
+        {gifs.map(setGifs => <img src={setGifs} alt={setGifs} />)}
+      </div>
 		</>
 	);
 }
