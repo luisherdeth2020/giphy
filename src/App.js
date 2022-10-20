@@ -21,29 +21,29 @@ function App() {
 			//TODO tenemos formateada como JSON
 
 			.then((response) => {
-				setGifs(response.data);
+				// setGifs(response.data);
 				const { data } = response;
 				// if(Array.isArray(data)){
 
-				
 				// setGifs(response.data);
 
 				// const gifs = data.map((item) => item.images.downsized_medium);
 				// const title = data.map((item) => item.images.title);
 
 				const gifs = data.map((item) => {
-					const { images, title, id } = item;
+					const { images, title, id, rating, source_tld } = item;
 					const { url } = images.downsized_medium;
-					return { title, id, url };
+					const { hash } = images.original.hash;
+					return { title, id, url, rating, source_tld, hash };
 				});
-				return gifs;
+				setGifs(gifs);
 				// gifs.map((item) => item.images.downsized_medium.url);
 				// setGifs(data.map((item) => item.images.downsized_medium.url));
 				// const { data } = response;
 				// console.log(gifs);
 				// setGifs(gifs);
 				// setGifs(title);
-			// }
+				// }
 			});
 	}, []);
 
@@ -51,9 +51,16 @@ function App() {
 		<>
 			<Navbar title="Rick and Morty App" />
 			<div className="container">
-				{gifs.map((setGifs) => (
-					<img src={setGifs.url} alt="panda" />
-				))}
+				{gifs.map((setGifs) => {
+					return (
+						<div>
+							<h4>{setGifs.title}</h4>
+							<p>{setGifs.source_tld}</p>
+							<p>{setGifs.hash}</p>
+							<img src={setGifs.url} alt="panda" />
+						</div>
+					);
+				})}
 			</div>
 		</>
 	);
