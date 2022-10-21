@@ -21,29 +21,21 @@ function App() {
 			//TODO tenemos formateada como JSON
 
 			.then((response) => {
-				// setGifs(response.data);
+				/* //? OPCION 2  */
+
+				setGifs(response.data);
+
+				/* //? OPCION 1  */
 				const { data } = response;
+
 				// if(Array.isArray(data)){
-
-				// setGifs(response.data);
-
-				// const gifs = data.map((item) => item.images.downsized_medium);
-				// const title = data.map((item) => item.images.title);
-
-				const gifs = data.map((item) => {
+				const getImage = data.map((item) => {
 					const { images, title, id, rating, source_tld } = item;
 					const { url } = images.downsized_medium;
-					const { hash } = images.original.hash;
+					const { hash } = images.original;
 					return { title, id, url, rating, source_tld, hash };
 				});
-				setGifs(gifs);
-				// gifs.map((item) => item.images.downsized_medium.url);
-				// setGifs(data.map((item) => item.images.downsized_medium.url));
-				// const { data } = response;
-				// console.log(gifs);
-				// setGifs(gifs);
-				// setGifs(title);
-				// }
+				setGifs(getImage);
 			});
 	}, []);
 
@@ -51,6 +43,8 @@ function App() {
 		<>
 			<Navbar title="Rick and Morty App" />
 			<div className="container">
+				{/* //? OPCION 1  */}
+
 				{gifs.map((setGifs) => {
 					return (
 						<div>
@@ -61,6 +55,16 @@ function App() {
 						</div>
 					);
 				})}
+
+				{/* //? OPCION 2  */}
+
+				{/* 
+				{gifs.map((item) => (
+					<div>
+						<h4>{item.title}</h4>
+						<img src={item.images.downsized_medium.url} alt="" />
+					</div>
+				))} */}
 			</div>
 		</>
 	);
