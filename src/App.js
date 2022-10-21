@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import GetGifs from './components/GetGifs';
+import getNewGifsOBject from './components/GetNewGifsOBject';
 
 // const apiURL = 'https://rickandmortyapi.com/api/character';
 const apiURL =
@@ -15,27 +17,13 @@ function App() {
 			//TODO Obtenemos como una RESPUESTA, convertir OBJETO (formato JSON)
 
 			.then((res) => res.json())
-			// .then((data) => setGifs(data.results))
-			// .catch((error) => console.log(error));
-			// const { resp = [] } = data;
+
+			
 			//TODO tenemos formateada como JSON
 
 			.then((response) => {
-				/* //? OPCION 2  */
-
-				setGifs(response.data);
-
-				/* //? OPCION 1  */
-				const { data } = response;
-
-				// if(Array.isArray(data)){
-				const getImage = data.map((item) => {
-					const { images, title, id, rating, source_tld } = item;
-					const { url } = images.downsized_medium;
-					const { hash } = images.original;
-					return { title, id, url, rating, source_tld, hash };
-				});
-				setGifs(getImage);
+				const newGifsObject = getNewGifsOBject(response.data);
+				setGifs(newGifsObject);
 			});
 	}, []);
 
@@ -43,28 +31,7 @@ function App() {
 		<>
 			<Navbar title="Rick and Morty App" />
 			<div className="container">
-				{/* //? OPCION 1  */}
-
-				{gifs.map((setGifs) => {
-					return (
-						<div>
-							<h4>{setGifs.title}</h4>
-							<p>{setGifs.source_tld}</p>
-							<p>{setGifs.hash}</p>
-							<img src={setGifs.url} alt="panda" />
-						</div>
-					);
-				})}
-
-				{/* //? OPCION 2  */}
-
-				{/* 
-				{gifs.map((item) => (
-					<div>
-						<h4>{item.title}</h4>
-						<img src={item.images.downsized_medium.url} alt="" />
-					</div>
-				))} */}
+				<GetGifs gifs={gifs} />
 			</div>
 		</>
 	);

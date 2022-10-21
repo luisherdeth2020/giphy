@@ -1,11 +1,18 @@
-// const apiURL = 'https://rickandmortyapi.com/api/character';
+const getGif = ({ gifs = [] }) => {
+	return (
+		<div>
+			{gifs.map((setGifs) => {
+				return (
+					<div>
+						<h4>{setGifs.title}</h4>
+						<p>{setGifs.id}</p>
+						<p>{setGifs.hash}</p>
+						<img src={setGifs.url} alt="panda" />
+					</div>
+				);
+			})}
+		</div>
+	);
+};
 
-// export default function GetGifs() {
-// 	const fetchCharacter = () => {
-// 		fetch(apiURL)
-// 			.then((response) => response.json())
-// 			.then((data) => console.log(data))
-// 			.catch((error) => console.log(error));
-// 	};
-// 	useEffect(() => {}, []);
-// }
+export default getGif;
