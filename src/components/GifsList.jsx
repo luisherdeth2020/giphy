@@ -1,4 +1,4 @@
-const getGif = ({ gifs = [] }) => {
+const GifsList = ({ gifs = [] }) => {
 	return (
 		<div>
 			{gifs.map((setGifs) => {
@@ -15,4 +15,4 @@ const getGif = ({ gifs = [] }) => {
 	);
 };
 
-export default getGif;
+export default GifsList;
