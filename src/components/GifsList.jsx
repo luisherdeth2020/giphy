@@ -1,3 +1,12 @@
+// import { useEffect, useState } from 'react';
+// import getNewGifsOBject from './components/getNewGifsOBject';
+
+
+// const [gifs, setGifs] = useState([]);
+// useEffect(function () {
+// 	getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
+// }, []);
+
 const GifsList = ({ gifs = [] }) => {
 	return (
 		<div>
@@ -14,5 +23,7 @@ const GifsList = ({ gifs = [] }) => {
 		</div>
 	);
 };
+
+
 
 export default GifsList;

@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
+
 const apiKey = 'LMKcBVBub91y9rp048zM7xM9FkhdT8Zq';
 
+const [gifs, setGifs] = useState([]);
 export default function getNewGifsOBject({ keyword = 'morty' } = {}) {
 	const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
 
@@ -21,4 +24,11 @@ export default function getNewGifsOBject({ keyword = 'morty' } = {}) {
 				return gifs;
 			})
 	);
+
+	
+	
 }
+
+useEffect(function () {
+	getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
+}, []);

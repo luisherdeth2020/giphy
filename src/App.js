@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import GifsList from './components/GifsList';
-import getNewGifsOBject from './components/getNewGifsOBject';
+// import getNewGifsOBject from './components/getNewGifsOBject';
 
 function App() {
-	const [gifs, setGifs] = useState([]);
+	// const [gifs, setGifs] = useState([]);
 
-	useEffect(function () {
-		getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
-	}, []);
+	// useEffect(function () {
+	// 	getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
+	// }, []);
 
 	return (
 		<>
