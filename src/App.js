@@ -5,20 +5,20 @@ import GifsList from './components/GifsList';
 // import getNewGifsOBject from './components/getNewGifsOBject';
 
 function App() {
-	// const [gifs, setGifs] = useState([]);
+  // const [gifs, setGifs] = useState([]);
 
-	// useEffect(function () {
-	// 	getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
-	// }, []);
+  // useEffect(function () {
+  // 	getNewGifsOBject({ keyword: 'rick' }).then((gifs) => setGifs(gifs));
+  // }, []);
 
-	return (
-		<>
-			<Navbar title="Rick and Morty App" />
-			<div className="container">
-				<GifsList gifs={gifs} />
-			</div>
-		</>
-	);
+  return (
+    <>
+      <Navbar title="Rick and Morty App" />
+      <div className="container">
+        <GifsList />
+      </div>
+    </>
+  );
 }
 
 export default App;
